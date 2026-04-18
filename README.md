@@ -1,6 +1,6 @@
 # User NonChurn AI
 
-User NonChurn AI is an autonomous analytics agent that ingests raw product event logs, identifies the statistically derived Activation Signal - the specific user action most correlated with long-term retention - and segments new users by their likelihood of churning. Everything is surfaced through an interactive Streamlit dashboard.
+User NonChurn AI is an autonomous analytics agent that ingests raw product event logs, identifies the statistically derived Activation Signal - the specific user action most correlated with long-term retention and segments new users by their likelihood of churning. Everything is surfaced through an interactive Streamlit dashboard.
 
 The core question this agent answers: "What is the one thing a new user must do in their first 7 days to predict they will stick around?" And it answers it with data, not gut feel.
 
@@ -105,8 +105,6 @@ The data generator creates users across 9 realistic behaviour patterns.
 | G | Noise - hits activation signal but still churns | No |
 | H | Noise - solo user who comes back without activation | Yes |
 | I | Noise - lurker who returns after re-engagement | Yes |
-
-Patterns G, H, and I exist specifically to introduce realistic noise. Without noise, the agent produces perfect correlations (r=1.0, lift=∞) which look impressive but do not reflect real product data. With noise, you get realistic numbers: r≈0.485 for the activation signal (collab_within_48h), lift≈3.74×, retention if triggered around 68%, and retention if missed around 18%. The top raw correlating feature is typically tasks_added (r≈0.557), but Claude chooses collab_within_48h as the activation signal because it is more actionable.
 
 ---
 
@@ -230,16 +228,6 @@ No external APIs. No database. No cloud dependencies. Runs entirely locally.
 ## Interpreting The Results
 
 A high lift above 3× means the activation signal is very selective and hitting it strongly predicts retention. A low lift between 1 and 2× means multiple paths to retention exist and the signal matters but is not the only one. A negative onboarding correlation means users who watch tutorials are more confused than curious and onboarding should be rethought. A high retention-if-missed percentage means solo users find value without collaboration and a separate solo use case may be worth supporting. A large at-risk segment means many users are one teammate action away from activating and email nudges to invitees are the highest-priority growth action.
-
----
-
-## Built By
-
-Aakash Bhanushali - MS Business Analytics, UC Irvine
-
-Portfolio: aakashbhanushali20.wixsite.com/aakash-bhanushali
-
-LinkedIn: linkedin.com/in/aakash-bhanushali
 
 ---
 
